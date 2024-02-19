@@ -1,0 +1,8 @@
+<h1> <%= @user.username %>'s page</h1>
+<h3>Events</h3>
+<% if !@user.events.blank? %>
+  <% for event in @user.events %>
+    <%= event.name %>
+    <%= link_to 'See more', event %>
+  <% end %>
+<% end %>

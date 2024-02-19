@@ -22,6 +22,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_02_19_150642) do
     t.date "ends_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "creator_type"
     t.bigint "creator_id"
     t.index ["creator_id"], name: "index_events_on_creator_id"
   end
