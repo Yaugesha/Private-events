@@ -1,0 +1,29 @@
+<h1> Create your own event </h1>
+<%= form_with model: @event do |f| %>
+  <div class="field">
+    <%= f.label :name %><br />
+    <%= f.text_field :name, autofocus: true %>
+  </div>
+  <div class="field">
+    <%= f.label :description %><br />
+    <%= f.text_field :description, autofocus: true %>
+  </div>
+  <div class="field">
+    <%= f.label :adress %><br />
+    <%= f.text_field :adress, autofocus: true %>
+  </div>
+  <div>
+    <div class="field">
+      <%= f.label :starts_at %><br />
+      <%= f.date_field :starts_at, autofocus: true %>
+    </div>
+    <div class="field">
+      <%= f.label :ends_at %><br />
+      <%= f.date_field :ends_at, autofocus: true %>
+    </div>
+  </div>
+  <br />
+  <div class="actions">
+    <%= f.submit "Create" %>
+  </div>
+<% end %>
