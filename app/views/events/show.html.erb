@@ -8,7 +8,14 @@
 </div>
 <p> <%= @event.description %> </p>
 
- 
+ <% if @event.creator_id == current_user&.id %>
+        <%= button_to "Delete event",
+          event_path(id: @event.id), 
+          method: :delete, 
+          data: { turbo_confirm: "Are you sure?" } 
+        %>
+ <% end %>
+
  <% if user_signed_in? %>
  <%# if current_user.id == @event.creator_id %>
     <p> Attendences: </p>
@@ -23,5 +30,5 @@
 <% if user_signed_in? %>
     <%= link_to 'Become event attendencee', new_event_event_attendencee_path(@event.id) %>
 <% else %>
-    <p> To become attendencee you have to sign in</p>
+    <p> To become attendencee and see other attendencies you have to sign in</p>
 <% end %>

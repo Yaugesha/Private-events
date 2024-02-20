@@ -1,25 +1,39 @@
 <h1> Create your own event </h1>
+
+<div>
+  <% if !flash.blank? %>
+    <% flash.each do |type, message| %>
+      <div class=type><%= message %></div>
+    <% end %>
+  <% end %>
+</div>
+
 <%= form_with model: @event do |f| %>
   <div class="field">
     <%= f.label :name %><br />
-    <%= f.text_field :name, autofocus: true %>
+    <%= render 'error_message', event: @event, field: :name %>
+    <%= f.text_field :name, autofocus: true %><br />
   </div>
   <div class="field">
     <%= f.label :description %><br />
-    <%= f.text_field :description, autofocus: true %>
+    <%= render 'error_message', event: @event, field: :description %>
+    <%= f.text_field :description, autofocus: true %><br />
   </div>
   <div class="field">
     <%= f.label :adress %><br />
-    <%= f.text_field :adress, autofocus: true %>
+    <%= render 'error_message', event: @event, field: :adress %>
+    <%= f.text_field :adress, autofocus: true %><br />
   </div>
   <div>
     <div class="field">
       <%= f.label :starts_at %><br />
-      <%= f.date_field :starts_at, autofocus: true %>
+      <%= render 'error_message', event: @event, field: :starts_at %>
+      <%= f.date_field :starts_at, autofocus: true %><br />
     </div>
     <div class="field">
       <%= f.label :ends_at %><br />
-      <%= f.date_field :ends_at, autofocus: true %>
+      <%= render 'error_message', event: @event, field: :ends_at %>
+      <%= f.date_field :ends_at, autofocus: true %><br />
     </div>
   </div>
   <br />

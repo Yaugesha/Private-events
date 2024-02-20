@@ -2,10 +2,21 @@
 
 <h3>Events</h3>
 
+<% if @user.id == current_user&.id %>
+  <%= link_to 'Create event', new_event_path %>
+<% end %>
+
 <ul>
   <% if !@user.events.blank? %> 
     <% for event in @user.events %>
       <li><%= event.name %> <%= link_to 'See more', event %></li>
+      <% if @user.id == current_user.id %>
+        <%= button_to "Delete event",
+          event_path(id: event.id), 
+          method: :delete, 
+          data: { turbo_confirm: "Are you sure?" } 
+        %>
+      <% end %>
     <% end %> 
   <% end %>
 </ul>
@@ -39,7 +50,7 @@
           <li><%= event.name %></li>
         <% end %> 
       <% else %>
-        <p>Now<%= @user.username %> free</p>
+        <p>Now <%= @user.username %> free</p>
       <% end %>
     </ul>
 
@@ -51,7 +62,7 @@
           <li><%= event.name %></li>
         <% end %> 
       <% else %>
-        <p>Now<%= @user.username %> free</p>
+        <p><%= @user.username %> is not going to come to any event</p>
       <% end %>
     </ul>
 

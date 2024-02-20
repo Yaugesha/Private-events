@@ -21,9 +21,16 @@ class EventsController < ApplicationController
 
     if @event.save
       redirect_to events_path
+      flash[:success] = "#{@event.name} created sccuessfuly!"
     else
+      flash.now[:error] = "Rats! Fix your mistakes, please."
       render :new, status: :unprocessable_entity
     end
+  end
+
+  def destroy
+    puts "destroy"
+    Event.find(params[:id]).destroy
   end
 
   private
