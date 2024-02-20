@@ -21,7 +21,7 @@
  
 
 <% if user_signed_in? %>
-    <%= link_to 'Become event attendencee', event_event_attendencee_path(@event.id) %>
+    <%= link_to 'Become event attendencee', new_event_event_attendencee_path(@event.id) %>
 <% else %>
     <p> To become attendencee you have to sign in</p>
 <% end %>

@@ -71,3 +71,5 @@ end
 gem 'htmlbeautifier'
 
 gem "devise", "~> 4.9"
+
+gem 'cssbundling-rails'

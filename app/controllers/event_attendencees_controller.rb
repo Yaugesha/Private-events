@@ -2,10 +2,6 @@ class EventAttendenceesController < ApplicationController
 before_action :authenticate_user!
 before_action :set_event
 
-def show
-  @attendencee = EventAttendencee.new
-end
-
 def new
   @atendencee = EventAttendencee.new
 end

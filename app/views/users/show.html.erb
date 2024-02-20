@@ -1,8 +1,68 @@
-<h1> <%= @user.username %>'s page</h1>
+<h1><%= @user.username %>'s page</h1>
+
 <h3>Events</h3>
-<% if !@user.events.blank? %>
-  <% for event in @user.events %>
-    <%= event.name %>
-    <%= link_to 'See more', event %>
+
+<ul>
+  <% if !@user.events.blank? %> 
+    <% for event in @user.events %>
+      <li><%= event.name %> <%= link_to 'See more', event %></li>
+    <% end %> 
   <% end %>
-<% end %>
+</ul>
+
+
+    <h4>Feauture events</h4>
+    <ul>
+      <% if !@feauture_events.blank? %> 
+        <% for event in @feauture_events %>
+          <li><%= event.name %></li>
+        <% end %> 
+      <% end %>
+    </ul>
+
+    <h4>Previous events</h4>
+    <ul>
+      <% if !@pased_events.blank? %> 
+        <% for event in @pased_events %>
+          <li><%= event.name %></li>
+        <% end %> 
+      <% else %>
+        <p>There wasn't any events before</p>
+      <% end %>
+    </ul>
+
+
+    <h3>Particepates in events as attendancee</h3>
+    <ul>
+      <% if !@current_events_attandencee.blank? %>
+        <% for event in @current_events_attandencee %>
+          <li><%= event.name %></li>
+        <% end %> 
+      <% else %>
+        <p>Now<%= @user.username %> free</p>
+      <% end %>
+    </ul>
+
+
+    <h3>Will Particepate in events as attendancee</h3>
+    <ul>
+      <% if !@feaut_events_attandencee.blank? %>
+        <% for event in @feaut_events_attandencee %>
+          <li><%= event.name %></li>
+        <% end %> 
+      <% else %>
+        <p>Now<%= @user.username %> free</p>
+      <% end %>
+    </ul>
+
+
+    <h3>Particepated in events as attendancee</h3>
+    <ul>
+      <% if !@prev_events_attandencee.blank? %> 
+        <% for event in @prev_events_attandencee %>
+          <li><%= event.name %></li>
+        <% end %> 
+      <% else %>
+        <p>There wasn't any events where <%= @user.username %> particapated</p>
+      <% end %>
+    </ul>
