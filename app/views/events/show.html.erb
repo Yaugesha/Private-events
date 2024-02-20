@@ -1,0 +1,27 @@
+<h1> <%= @event.name %> </h1>
+<div> 
+    <h2> creator: <%= @event.creator.username %> </h2>
+    <div>
+        start: <%= @event.starts_at %>
+        end: <%= @event.ends_at %> 
+    </div>
+</div>
+<p> <%= @event.description %> </p>
+
+ 
+ <% if user_signed_in? %>
+ <%# if current_user.id == @event.creator_id %>
+    <p> Attendences: </p>
+    <ul>
+    <% @attendences.each do |attendencee| %>
+      <li> <%= User.find(attendencee.attendencee_id).username %> </li>
+    <% end %>
+    
+ <% end %>
+ 
+
+<% if user_signed_in? %>
+    <%= link_to 'Become event attendencee', event_event_attendencee_path(@event.id) %>
+<% else %>
+    <p> To become attendencee you have to sign in</p>
+<% end %>
