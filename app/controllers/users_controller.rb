@@ -30,6 +30,6 @@ class UsersController < ApplicationController
   end
 
   def find_subscribers
-    @subscribers = User.find(params[:id]).subscribed_users
+    @subscribers = User.find(params[:id]).subscribers
   end
 end

@@ -10,8 +10,11 @@ class User < ApplicationRecord
   has_many :subscriptions_as_subscriber, class_name: "Subscription", foreign_key: "subscriber_id", dependent: :destroy
   has_many :subscriptions_as_subscribed_user, class_name: "Subscription", foreign_key: "subscribed_user_id", dependent: :destroy
 
-  has_many :subscribers, through: :subscriptions_as_subscriber
-  has_many :subscribed_users, through: :subscriptions_as_subscribed_user
+  has_many :subscribers, through: :subscriptions_as_subscribed_user
+  has_many :subscribed_users, through: :subscriptions_as_subscriber
 
   validates :username, length: {minimum:4, maximum:10}
+
+  scope :subscribed_users, ->(user_id) {where(id: user_id).joins(:subscriptions_as_subscriber).select(:subscribed_user_id)}
+
 end

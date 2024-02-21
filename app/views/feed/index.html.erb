@@ -1,0 +1,6 @@
+<h1>Feed</h1>
+<% @events.each do |event| %>
+  <h3> <%= event.name %> </h3>
+  <p> <%= event.description %> </p>
+  <%= link_to 'See more', event_path(event) %>
+<% end %>

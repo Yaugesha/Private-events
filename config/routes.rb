@@ -9,6 +9,8 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   root "events#index"
 
+  get "/feed", to: "feed#index"
+
   resources :users do
     resources :subscriptions, only: [:index, :create, :destroy]
   end
