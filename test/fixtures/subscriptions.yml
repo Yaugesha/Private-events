@@ -1,0 +1,9 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  subscriber: one
+  subscriebed_user: one
+
+two:
+  subscriber: two
+  subscriebed_user: two

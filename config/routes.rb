@@ -9,7 +9,9 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   root "events#index"
 
-  resources :users
+  resources :users do
+    resources :subscriptions, only: [:index, :create, :destroy]
+  end
 
   resources :events do
     resources :event_attendencees

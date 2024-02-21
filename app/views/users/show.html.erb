@@ -1,10 +1,27 @@
 <h1><%= @user.username %>'s page</h1>
 
-<h3>Events</h3>
+<h3>Subscribers</h3>
 
-<% if @user.id == current_user&.id %>
-  <%= link_to 'Create event', new_event_path %>
+<% if !@subscribers.blank? %>
+  <% for subscriber in @subscribers %>
+    <%= link_to "#{subscriber.username}", user_path(subscriber) %>
+  <% end %>
+  <% else %>
+  <p><%= @user.username %> has no subscribers</p>
 <% end %>
+
+
+<% if !user_signed_in? %>
+  <p> Sign in to subscribe for <%= @user.username %></p>
+<% elsif @user.id == current_user.id %>
+  <%= link_to 'Create event', new_event_path %>
+<% elsif @subscribed %>
+  <%= button_to "Subscribe", user_subscriptions_path(user_id: params[:id]) %>
+<% else %>
+  <%= button_to "Unsubscribe", user_subscription_path(user_id: params[:id]), method: :delete %>
+<% end %>
+
+<h3>Events</h3>
 
 <ul>
   <% if !@user.events.blank? %> 
